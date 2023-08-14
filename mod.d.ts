@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2023 The Stdlib Authors.
@@ -16,26 +16,30 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-var filled2d = require( './../lib' );
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
 
-var out = filled2d( 0.0, [ 1, 3 ] );
-console.log( out );
-// => [ [ 0.0, 0.0, 0.0 ] ]
+import { Collection } from '@stdlib/types/object';
 
-out = filled2d( 'beep', [ 3, 1 ] );
-console.log( out );
-// => [ [ 'beep' ], [ 'beep' ], [ 'beep' ] ]
+/**
+* Returns a filled two-dimensional nested array.
+*
+* @param value - fill value
+* @param shape - array shape
+* @returns output array
+*
+* @example
+* var out = filled2d( 0.0, [ 1, 3 ] );
+* // returns [ [ 0.0, 0.0, 0.0 ] ]
+*
+* @example
+* var out = filled2d( 'beep', [ 1, 3 ] );
+* // returns [ [ 'beep', 'beep', 'beep' ] ]
+*/
+declare function filled2d<T = unknown>( value: T, shape: Collection<number> ): Array<Array<T>>;
 
-out = filled2d( null, [ 1, 3 ] );
-console.log( out );
-// => [ [ null, null, null ] ]
 
-out = filled2d( true, [ 3, 1 ] );
-console.log( out );
-// => [ [ true ], [ true ], [ true ] ]
+// EXPORTS //
 
-out = filled2d( void 0, [ 1, 3 ] );
-console.log( out );
-// => [ [ undefined, undefined, undefined ] ]
+export = filled2d;
