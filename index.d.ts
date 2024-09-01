@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2023 The Stdlib Authors.
@@ -16,48 +16,36 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
 
-// MODULES //
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
-var filled = require( '@stdlib/array-base-filled' );
+import { Collection } from '@stdlib/types/array';
+import { Shape2D } from '@stdlib/types/ndarray';
 
-
-// MAIN //
+/**
+* Two-dimensional nested array.
+*/
+type Array2D<T> = Array<Array<T>>;
 
 /**
 * Returns a filled two-dimensional nested array.
 *
-* @param {*} value - fill value
-* @param {NonNegativeIntegerArray} shape - array shape
-* @returns {Array} filled array
+* @param value - fill value
+* @param shape - array shape
+* @returns output array
 *
 * @example
 * var out = filled2d( 0.0, [ 1, 3 ] );
 * // returns [ [ 0.0, 0.0, 0.0 ] ]
 *
 * @example
-* var out = filled2d( 'beep', [ 3, 1 ] );
-* // returns [ [ 'beep' ], [ 'beep' ], [ 'beep' ] ]
+* var out = filled2d( 'beep', [ 1, 3 ] );
+* // returns [ [ 'beep', 'beep', 'beep' ] ]
 */
-function filled2d( value, shape ) {
-	var arr;
-	var S0;
-	var S1;
-	var i;
-
-	S0 = shape[ 1 ];
-	S1 = shape[ 0 ];
-
-	// Manually push elements in order to ensure "fast" elements...
-	arr = [];
-	for ( i = 0; i < S1; i++ ) {
-		arr.push( filled( value, S0 ) );
-	}
-	return arr;
-}
+declare function filled2d<T = unknown>( value: T, shape: Shape2D ): Array2D<T>;
 
 
 // EXPORTS //
 
-module.exports = filled2d;
+export = filled2d;
